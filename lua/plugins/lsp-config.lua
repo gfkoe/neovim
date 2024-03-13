@@ -33,6 +33,9 @@ return {
       local cmp_action = lsp_zero.cmp_action()
 
       cmp.setup({
+        sources = {
+          { name = "copilot", group_index = 2 },
+        },
         formatting = lsp_zero.cmp_format({details = true}),
         mapping = cmp.mapping.preset.insert({
           ['<C-Space>'] = cmp.mapping.complete(),
@@ -69,7 +72,7 @@ return {
 
       require('mason-lspconfig').setup({
         ensure_installed = {
-          "lua_ls"
+          "lua_ls",
         },
         handlers = {
           lsp_zero.default_setup,
@@ -83,3 +86,4 @@ return {
     end
   }
 }
+
