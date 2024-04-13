@@ -5,5 +5,6 @@ vim.cmd("set shiftwidth=2")
 vim.cmd("set number")
 vim.g.mapleader = " "
 vim.cmd("filetype indent on")
-vim.cmd("set mouse=c")
+vim.cmd("set number")
+vim.cmd("set relativenumber")
 vim.cmd("set guicursor=i:block")
