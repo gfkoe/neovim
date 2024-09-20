@@ -74,7 +74,6 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"tsserver",
 				},
 				handlers = {
 					lsp_zero.default_setup,
