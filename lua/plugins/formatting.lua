@@ -18,6 +18,8 @@ return {
 				html = { "prettierd", "prettier" },
 				json = { "prettierd", "prettier" },
 				markdown = { "prettierd", "prettier" },
+				go = { "gofmt", "gofumpt" },
+				python = { "black" },
 			},
 			format_on_save = {
 				lsp_fallback = "fallback",
