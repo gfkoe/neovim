@@ -20,6 +20,7 @@ return {
 				markdown = { "prettierd", "prettier" },
 				go = { "gofmt", "gofumpt" },
 				python = { "black" },
+				gomod = { "goimports" },
 			},
 			format_on_save = {
 				lsp_fallback = "fallback",
