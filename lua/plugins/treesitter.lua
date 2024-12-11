@@ -17,6 +17,8 @@ return {
 				"heex",
 				"javascript",
 				"html",
+				"python",
+				"go",
 			},
 			highlight = { enable = true },
 			indent = { enable = true },
