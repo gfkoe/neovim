@@ -1,8 +1,11 @@
+vim.opt.guicursor = ""
+
 vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
+vim.cmd("set tabstop=4")
+vim.cmd("set softtabstop=4")
+vim.cmd("set shiftwidth=4")
 vim.cmd("set number")
+vim.cmd("set smartindent")
 
 vim.g.mapleader = " "
 
@@ -12,7 +15,9 @@ vim.cmd("set relativenumber")
 vim.cmd("set guicursor=i:block")
 vim.cmd("lua vim.diagnostic.open_float()")
 
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+vim.opt.colorcolumn = "80"
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
