@@ -1,11 +1,20 @@
 vim.opt.guicursor = ""
 
 vim.cmd("set expandtab")
-vim.cmd("set tabstop=4")
-vim.cmd("set softtabstop=4")
-vim.cmd("set shiftwidth=4")
+vim.cmd("set tabstop=2")
+vim.cmd("set softtabstop=2")
+vim.cmd("set shiftwidth=2")
 vim.cmd("set number")
 vim.cmd("set smartindent")
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"lua", "python", "go", "java"},
+    callback = function()
+        vim.cmd("setlocal tabstop=4")
+        vim.cmd("setlocal softtabstop=4")
+        vim.cmd("setlocal shiftwidth=4")
+    end
+}
 
 vim.g.mapleader = " "
 
