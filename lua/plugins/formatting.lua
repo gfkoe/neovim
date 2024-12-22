@@ -19,13 +19,12 @@ return {
 				json = { "prettierd", "prettier" },
 				markdown = { "prettierd", "prettier" },
 				go = { "gofmt", "gofumpt" },
-				python = { "black" },
 				gomod = { "goimports" },
 			},
 			format_on_save = {
 				lsp_fallback = "fallback",
 				async = false,
-				timeout_ms = 1000,
+				timeout_ms = 2000,
 			},
 		})
 
@@ -33,7 +32,7 @@ return {
 			conform.format({
 				lsp_fallback = true,
 				async = false,
-				timeout_ms = 1000,
+				timeout_ms = 2000,
 			})
 		end, { desc = "Format file or range (in visual mode)" })
 	end,
