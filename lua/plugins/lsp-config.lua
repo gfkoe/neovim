@@ -17,48 +17,64 @@ return {
 	},
 
 	-- Autocompletion
-	{
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		dependencies = {
-			{ "L3MON4D3/LuaSnip" },
-		},
-		config = function()
-			-- Here is where you configure the autocompletion settings.
-			local lsp_zero = require("lsp-zero")
-			lsp_zero.extend_cmp()
+    {
+      'saghen/blink.cmp',
+      -- optional: provides snippets for the snippet source
+      dependencies = 'rafamadriz/friendly-snippets',
+      version = '*',
+      opts = {
+        keymap = { preset = 'default' },
+        appearance = {
+          use_nvim_cmp_as_default = true,
+          nerd_font_variant = 'mono'
+        },
+      },
+      signatue = { enabled = true }
+    },
+	--{
+	--	"hrsh7th/nvim-cmp",
+	--	event = "InsertEnter",
+	--	dependencies = {
+	--		{ "L3MON4D3/LuaSnip" },
+	--	},
+	--	config = function()
+	--		-- Here is where you configure the autocompletion settings.
+	--		local lsp_zero = require("lsp-zero")
+	--		lsp_zero.extend_cmp()
 
-			-- And you can configure cmp even more, if you want to.
-			local cmp = require("cmp")
-			local cmp_action = lsp_zero.cmp_action()
+	--		-- And you can configure cmp even more, if you want to.
+	--		local cmp = require("cmp")
+	--		local cmp_action = lsp_zero.cmp_action()
 
-			cmp.setup({
-				sources = {
-					{ name = "nvim_lsp", group_index = 2 },
-					{ name = "copilot", group_index = 2 },
-				},
-				formatting = lsp_zero.cmp_format({ details = true }),
-				mapping = cmp.mapping.preset.insert({
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<C-u>"] = cmp.mapping.scroll_docs(-4),
-					["<C-d>"] = cmp.mapping.scroll_docs(4),
-					["<C-f>"] = cmp_action.luasnip_jump_forward(),
-					["<C-b>"] = cmp_action.luasnip_jump_backward(),
-				}),
-			})
-		end,
-	},
+	--		cmp.setup({
+	--			sources = {
+	--				{ name = "nvim_lsp", group_index = 2 },
+	--				{ name = "copilot", group_index = 2 },
+	--			},
+	--			formatting = lsp_zero.cmp_format({ details = true }),
+	--			mapping = cmp.mapping.preset.insert({
+	--				["<C-Space>"] = cmp.mapping.complete(),
+	--				["<C-u>"] = cmp.mapping.scroll_docs(-4),
+	--				["<C-d>"] = cmp.mapping.scroll_docs(4),
+	--				["<C-f>"] = cmp_action.luasnip_jump_forward(),
+	--				["<C-b>"] = cmp_action.luasnip_jump_backward(),
+	--			}),
+	--		})
+	--	end,
+	--},
 
 	-- LSP
-	{
+    {
 		"neovim/nvim-lspconfig",
 		cmd = { "LspInfo", "LspInstall", "LspStart" },
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
-			{ "hrsh7th/cmp-nvim-lsp" },
+			--{ "hrsh7th/cmp-nvim-lsp" },
+            { "saghen/blink.cmp" },
 			{ "williamboman/mason-lspconfig.nvim" },
 		},
 		config = function()
+            local capabilities = require('blink.cmp').get_lsp_capabilities()
 			-- This is where all the LSP shenanigans will live
 			local lsp_zero = require("lsp-zero")
 			lsp_zero.extend_lspconfig()
@@ -72,6 +88,7 @@ return {
 			end)
 
 			require("mason-lspconfig").setup({
+                capabilities = capabilities,
 				ensure_installed = {
 					"lua_ls",
 				},
