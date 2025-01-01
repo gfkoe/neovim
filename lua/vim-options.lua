@@ -8,13 +8,13 @@ vim.cmd("set number")
 vim.cmd("set smartindent")
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"lua", "python", "go", "java"},
-    callback = function()
-        vim.cmd("setlocal tabstop=4")
-        vim.cmd("setlocal softtabstop=4")
-        vim.cmd("setlocal shiftwidth=4")
-    end
-}
+	pattern = { "lua", "python", "go", "java" },
+	callback = function()
+		vim.cmd("setlocal tabstop=4")
+		vim.cmd("setlocal softtabstop=4")
+		vim.cmd("setlocal shiftwidth=4")
+	end,
+})
 
 vim.g.mapleader = " "
 
@@ -63,9 +63,9 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+
 vim.keymap.set("n", "<leader><leader>", function()
 	vim.cmd("so")
 end)
-
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
