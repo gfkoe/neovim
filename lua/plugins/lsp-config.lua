@@ -82,15 +82,6 @@ return {
 			lsp_zero.setup({
 				capabilities = capabilities,
 			})
-			lsp_zero.denols.setup({
-				capabilities = capabilities,
-				root_dir = lsp_zero.root_pattern("deno.json", "deno.jsonc"),
-			})
-			lsp_zero.ts_ls.setup({
-				capabilities = capabilities,
-				root_dir = lsp_zero.root_pattern("package.json"),
-				single_file_support = false,
-			})
 
 			--- if you want to know more about lsp-zero and mason.nvim
 			--- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
@@ -111,6 +102,17 @@ return {
 						-- (Optional) Configure lua language server for neovim
 						local lua_opts = lsp_zero.nvim_lua_ls()
 						require("lspconfig").lua_ls.setup(lua_opts)
+					end,
+					denols = function()
+						require("lspconfig").denols.setup({
+							root_dir = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc"),
+						})
+					end,
+					ts_ls = function()
+						require("lspconfig").ts_ls.setup({
+							root_dir = require("lspconfig.util").root_pattern("package.json"),
+							single_file_support = false,
+						})
 					end,
 				},
 			})
