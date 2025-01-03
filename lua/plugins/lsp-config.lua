@@ -17,20 +17,20 @@ return {
 	},
 
 	-- Autocompletion
-    {
-      'saghen/blink.cmp',
-      -- optional: provides snippets for the snippet source
-      dependencies = 'rafamadriz/friendly-snippets',
-      version = '*',
-      opts = {
-        keymap = { preset = 'default' },
-        appearance = {
-          use_nvim_cmp_as_default = true,
-          nerd_font_variant = 'mono'
-        },
-      },
-      signatue = { enabled = true }
-    },
+	{
+		"saghen/blink.cmp",
+		-- optional: provides snippets for the snippet source
+		dependencies = "rafamadriz/friendly-snippets",
+		version = "*",
+		opts = {
+			keymap = { preset = "default" },
+			appearance = {
+				use_nvim_cmp_as_default = true,
+				nerd_font_variant = "mono",
+			},
+		},
+		signatue = { enabled = true },
+	},
 	--{
 	--	"hrsh7th/nvim-cmp",
 	--	event = "InsertEnter",
@@ -64,20 +64,33 @@ return {
 	--},
 
 	-- LSP
-    {
+	{
 		"neovim/nvim-lspconfig",
 		cmd = { "LspInfo", "LspInstall", "LspStart" },
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			--{ "hrsh7th/cmp-nvim-lsp" },
-            { "saghen/blink.cmp" },
+			{ "saghen/blink.cmp" },
 			{ "williamboman/mason-lspconfig.nvim" },
 		},
+
 		config = function()
-            local capabilities = require('blink.cmp').get_lsp_capabilities()
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 			-- This is where all the LSP shenanigans will live
 			local lsp_zero = require("lsp-zero")
 			lsp_zero.extend_lspconfig()
+			lsp_zero.setup({
+				capabilities = capabilities,
+			})
+			lsp_zero.denols.setup({
+				capabilities = capabilities,
+				root_dir = lsp_zero.root_pattern("deno.json", "deno.jsonc"),
+			})
+			lsp_zero.ts_ls.setup({
+				capabilities = capabilities,
+				root_dir = lsp_zero.root_pattern("package.json"),
+				single_file_support = false,
+			})
 
 			--- if you want to know more about lsp-zero and mason.nvim
 			--- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
@@ -88,7 +101,7 @@ return {
 			end)
 
 			require("mason-lspconfig").setup({
-                capabilities = capabilities,
+				capabilities = capabilities,
 				ensure_installed = {
 					"lua_ls",
 				},
