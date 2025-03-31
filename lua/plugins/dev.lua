@@ -1,3 +1,3 @@
 return {
-	{ dir = "~/PersonalProjects/ezprev.nvim" },
+	--{ dir = "~/PersonalProjects/ezprev.nvim" },
 }

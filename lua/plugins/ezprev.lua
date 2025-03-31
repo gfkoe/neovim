@@ -1,0 +1,3 @@
+return {
+	"gfkoe/ezprev.nvim",
+}
