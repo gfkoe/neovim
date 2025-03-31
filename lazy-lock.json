@@ -3,7 +3,7 @@
   "brightburn.vim": { "branch": "master", "commit": "fc0d2fafc51e86d6065acd54b5e82e686019ff2f" },
   "conform.nvim": { "branch": "master", "commit": "9e434d78751dcdcaef048b62555914ed4a2b7b61" },
   "copilot.vim": { "branch": "release", "commit": "a9228e015528c9307890c48083c925eb98a64a79" },
-  "ezprev.nvim": { "branch": "main", "commit": "f5239ec47b7f14b8111f99ab4760894eeb9846aa" },
+  "ezprev.nvim": { "branch": "refactor-def-find", "commit": "404d528ad8c4e9c5e6bb3ad65899331318d4b94d" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
   "gitsigns.nvim": { "branch": "main", "commit": "3c76f7fabac723aa682365ef782f88a83ccdb4ac" },
   "gruvbox": { "branch": "main", "commit": "977b0103c66d505233d739b417cf01bd5994883e" },
