@@ -1,4 +1,4 @@
 return {
 	"gfkoe/ezprev.nvim",
-	branch = "refactor-def-find",
+	--branch = "refactor-def-find",
 }
